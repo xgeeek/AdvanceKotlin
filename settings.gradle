@@ -1,0 +1,3 @@
+include ':base-grammar'
+include ':app'
+rootProject.name = "AdvanceKotlin"
