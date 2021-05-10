@@ -6,6 +6,39 @@ package com.advance.kotlin.grammar.aBasicType
  * @date 2020/8/9
  * @since
  */
+class NullSafeClass {
+    // 1. 修饰符 变量名 ： 类型? = 值
+    var nullA: String? = ""
+
+    fun invoke() {
+        // 可空类型变量 ?.属性/方法
+        println(nullA?.length)
+        println(nullA?.length?.plus(5)?.minus(10))
+    }
+
+    // 2. 方法返回值为 null
+    fun test1(): Int? {
+        return null
+    }
+
+
+    // let 操作符 ?. 验证的时候忽略掉null
+    fun testLet() {
+        val arr: Array<Int?> = arrayOf(1, 2, null, 3, 4)
+        for (values in arr) {
+            values?.let {
+                println(values)
+            }
+        }
+    }
+
+    // ?: 操作符 如果该变量不为空，则使用，反之使用另外一个不为空的值
+    val testStr: String? = null
+    var length = testStr?.length ?: -1
+
+    // !! 操作符 可以理解为值不可能为空  所以当值为空的时候就会抛出 NullPointerException
+}
+
 // 返回 null 编译期不会通过的
 //fun getName(): String {
 //    return null
@@ -49,10 +82,12 @@ package com.advance.kotlin.grammar.aBasicType
 // 另外一种情况  我们已经知道不可能为 null
 // 需要告诉编译器不可能为空 !! println(getName()!!.length)
 fun getName(): String? {
-    return "hxj"
+    return null
 }
 
 
 fun main(args: Array<String>) {
-    println(getName()!!.length)
+    var testString: String? = null
+    println(testString?.length) // null
+    println(testString!!.length) //  java.lang.NullPointerException
 }
