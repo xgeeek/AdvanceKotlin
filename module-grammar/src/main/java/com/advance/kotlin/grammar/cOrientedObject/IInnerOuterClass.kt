@@ -6,7 +6,7 @@ package com.advance.kotlin.grammar.cOrientedObject
  * @date 2021/5/8
  * @since
  */
-open class Outter {
+open class Outter { // 默认是final类型的，加open可继承
     val a: Int = 0
 
     class StaticInner {
