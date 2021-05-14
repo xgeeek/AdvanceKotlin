@@ -30,6 +30,46 @@ val int2Long = fun(arg: Int): Long {
     return arg.toLong()
 }
 
+/**
+ * open 可继承
+ */
+open class AnimBase {
+    /**
+     * open 可重写
+     */
+    open fun test(a: Int, b: Int = 1) {
+
+    }
+}
+
+class AnimDoge : AnimBase() {
+
+    /**
+     * 重写方法  不允许为参数值指定默认值，无论 a , b 都不行
+     */
+    override fun test(a: Int, b: Int) {
+        super.test(a, b)
+    }
+}
+
+
+
+/**
+ * 中缀表达式条件：
+ * 是成员函数或者扩展函数
+ * 拥有单个参数
+ * 声明时使用 infix
+ */
+class Book {
+    // infix 中缀表达式 只有一个参数
+    infix fun on(any: Desk): Boolean {
+        return any.isGoodBook
+    }
+}
+
+class Desk {
+    var isGoodBook: Boolean = false
+}
 
 
 // Unit 相当于 java 的 void
@@ -51,6 +91,12 @@ fun main(args: Array<String>): Unit {
         println(it)
     }
     println("the end")
+
+
+    // on 是方法名
+    if (Book() on Desk()) { // dsl
+
+    }
 
 }
 

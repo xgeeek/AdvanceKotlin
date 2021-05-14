@@ -30,15 +30,6 @@ class Complex(var real: Double, var imaginary: Double) {
     }
 }
 
-class Book{
-    // infix 中缀表达式 只有一个参数
-    infix fun on(any: Any): Boolean{
-        return false
-    }
-}
-
-class Desk
-
 fun main(args: Array<String>) {
     val c1 = Complex(3.0, 4.0)
     val c2 = Complex(1.0, 2.0)
@@ -49,13 +40,8 @@ fun main(args: Array<String>) {
     println(c1.invoke()) // 5.0
 
     //-name <Name> 常用的 in
-    if("-name" in args){
+    if ("-name" in args) {
         println(args[args.indexOf("-name") + 1])
-    }
-
-    // on 是方法
-    if(Book() on Desk()){ // dsl
-
     }
 
 }
