@@ -6,7 +6,7 @@ package com.advance.kotlin.grammar.dHighFun
  */
 
 /**
- * inline 内联函数
+ * 1. inline 内联函数
  */
 inline fun payFoo(block: () -> Unit) {
     println("before block")
@@ -70,9 +70,35 @@ public final class BAdvanceFunctionKt {
 
  */
 
+
+/**
+ * 2. 避免使用内联的情况
+ *   1.由于JVM对普通函数已经能够根据实际情况智能地判断是否进行内联优化，所以我们并不需要对其使用Kotlin的inline语法，那只会让字节码变得更加复杂。
+ *   2.尽量避免对具有大量函数体的函数进行内联，这样会导致过多的字节码数量。
+ *   3.一旦一个函数被定义为内联函数，便不能获取闭包类的私有成员，除非你把它们声明为internal。
+ */
+class TestPay {
+    private var a = -1
+
+    internal inline fun printNum() {
+        println(a)
+    }
+}
+
+
+/**
+ * 3. 避免内联 noinline
+ */
+inline fun payFoo(block1: () -> Unit, noinline block2: () -> Unit) {
+    println("before block")
+    block1()
+    block2()
+    println("end block")
+}
+
+
 fun main() {
     payFoo {
-
     }
 }
 
