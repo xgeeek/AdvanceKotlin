@@ -132,6 +132,15 @@ class RunWithFunClass {
 
 
 /**
+ *   用于初始化对象或更改对象属性，可使用apply
+ *   如果将数据指派给接收对象的属性之前验证对象，可使用also
+ *   如果将对象进行空检查并访问或修改其属性，可使用let
+ *   如果是非null的对象并且当函数块中不需要返回值时，可使用with
+ *   如果想要计算某个值，或者限制多个本地变量的范围，则使用run
+ */
+
+
+/**
  * apply()、also()、let()
  */
 class ApplyAlsoLetFunClass {
@@ -139,7 +148,7 @@ class ApplyAlsoLetFunClass {
     companion object {
         fun testLet() {
             val str = "kotlinlet"
-            str.let {
+            str.let {// 返回的是lambda的值
                 println("kotlinlet 中的 this：$this") // companion
                 println("原字符串：$it")         // kotlinlet
                 it.reversed()
@@ -224,5 +233,16 @@ class ApplyAlsoLetFunClass {
 fun main(args: Array<String>) {
     //RunWithFunClass().main(args)
     //ApplyAlsoLetFunClass.testLet()
-    ApplyAlsoLetFunClass().main(args)
+    //ApplyAlsoLetFunClass().main(args)
+
+    // let
+    val numbers = mutableListOf("one", "two", "three", "four", "five")
+    numbers.map {
+        it.length
+    }.filter {
+        it > 3
+    }.let { singleLength ->
+        print("执行了1次哦")
+        print(singleLength)
+    }
 }
