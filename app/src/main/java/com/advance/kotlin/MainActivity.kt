@@ -1,10 +1,13 @@
 package com.advance.kotlin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.advance.kotlin.grammar.zCoroutine.CoroutineMainActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         foreverObj = "forever"
         //mLiveData.observeForever(MyObserve())
+
     }
 
 
@@ -59,12 +63,17 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    class MyObserver: Observer<String> {
+    class MyObserver : Observer<String> {
 
         override fun onChanged(t: String?) {
-            Log.i("observeForever", t?:"")
+            Log.i("observeForever", t ?: "")
         }
 
+    }
+
+
+    fun coroutineClick(view: View) {
+        startActivity(Intent(this, CoroutineMainActivity::class.java))
     }
 
 

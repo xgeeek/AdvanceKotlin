@@ -81,6 +81,8 @@ class FunctionClassType {
  * 特点： Lambda表达式总是被大括号括着
  *       其参数(如果存在)在符号'->'之前声明(参数类型可以省略)
  *       函数体(如果存在)在符号'->'后面。
+ *
+ *  注意与匿名对象的区别 object
  */
 class FunctionLambdaType {
 
@@ -111,8 +113,8 @@ class FunctionLambdaType {
      * val/var 变量名 = {参数名: 参数类型，参数名：参数类型  ->  方法体。。。}
      * lambda 默认方法体的最后一行为返回值，所以简写的方式是可以推断出返回值类型的
      */
-    private val twoArgFunLambda: (Int, Int) -> Int = { a, b -> a + b }
-    private val twoArgFunLambdaSimple = { a: Int, b: Int -> a + b }
+    private val twoArgFunLambda: (Int, Int) -> Int = { a, b -> a + b }  //匿名函数类型
+    private val twoArgFunLambdaSimple = { a: Int, b: Int -> a + b }     //匿名函数类型
 
 
     /**

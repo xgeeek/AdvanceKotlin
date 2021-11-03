@@ -9,7 +9,7 @@ package com.advance.kotlin.grammar.cOrientedObject
  * @date 2020/8/29
  * @since
  */
-interface InputDevice {
+interface InputDevice {  // 只有一个抽象方法的接口成为函数式接口或SAM(单一抽象方法)
     fun input()
 }
 
