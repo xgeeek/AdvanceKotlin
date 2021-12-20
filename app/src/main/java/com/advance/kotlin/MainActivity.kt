@@ -3,11 +3,17 @@ package com.advance.kotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.advance.kotlin.grammar.zCoroutine.CoroutineMainActivity
+import com.advance.kotlin.sort_dialog.ADialog
+import com.advance.kotlin.sort_dialog.BDialog
+import com.advance.kotlin.sort_dialog.CDialog
+import com.advance.kotlin.sort_dialog.DialogChain
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     val mLiveData = MutableLiveData<String>()
     lateinit var foreverObj: String
+    private lateinit var dialogChain: DialogChain
+    private val bDialog by lazy { BDialog(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +37,33 @@ class MainActivity : AppCompatActivity() {
         foreverObj = "forever"
         //mLiveData.observeForever(MyObserve())
 
+
+        createDialogChain() //创建 DialogChain
+        // 模拟延迟数据回调。
+        Handler(Looper.getMainLooper()).postDelayed({
+            bDialog.onDataCallback("延迟数据回来了！！")
+        },5000)
+
     }
 
+    //创建 DialogChain
+    private fun createDialogChain() {
+        dialogChain = DialogChain.create(3)
+            .attach(this)
+            .addInterceptor(ADialog(this))
+            .addInterceptor(bDialog)
+            .addInterceptor(CDialog(this))
+            .build()
+
+    }
 
     override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart")
         mLiveData.value = "onStart"  // 变为活跃状态，会回调onchange， 并且value会覆盖oncreate，onstop中设置的value
+
+        // 开始从链头弹窗。
+        dialogChain.process()
     }
 
     override fun onResume() {

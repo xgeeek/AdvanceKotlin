@@ -7,6 +7,8 @@ import kotlin.contracts.contract
 
 /**
  * 作用域函数
+ * 目的是在对象的上下文中执行代码块，它为调用者对象提供了一个临时内部作用域，在这个作用域中可以不显示的
+ * 访问该对象。
  * @author xugang
  * @date 2021/5/11
  */
@@ -231,18 +233,18 @@ class ApplyAlsoLetFunClass {
 
 
 fun main(args: Array<String>) {
-    //RunWithFunClass().main(args)
+    RunWithFunClass().main(args)
     //ApplyAlsoLetFunClass.testLet()
-    //ApplyAlsoLetFunClass().main(args)
+    ApplyAlsoLetFunClass().main(args)
 
     // let
-    val numbers = mutableListOf("one", "two", "three", "four", "five")
-    numbers.map {
-        it.length
-    }.filter {
-        it > 3
-    }.let { singleLength ->
-        print("执行了1次哦")
-        print(singleLength)
-    }
+//    val numbers = mutableListOf("one", "two", "three", "four", "five")
+//    numbers.map {
+//        it.length
+//    }.filter {
+//        it > 3
+//    }.let { singleLength ->
+//        print("执行了1次哦")
+//        print(singleLength)
+//    }
 }
