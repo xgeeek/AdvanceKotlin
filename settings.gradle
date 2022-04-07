@@ -1,4 +1,3 @@
-include ':module-coroutine'
 include ':module-grammar'
 include ':app'
 rootProject.name = "AdvanceKotlin"

@@ -9,11 +9,12 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.advance.kotlin.grammar.zCoroutine.CoroutineMainActivity
+import com.advance.kotlin.kline.demo.KDiagramActivity
 import com.advance.kotlin.sort_dialog.ADialog
 import com.advance.kotlin.sort_dialog.BDialog
 import com.advance.kotlin.sort_dialog.CDialog
 import com.advance.kotlin.sort_dialog.DialogChain
+import xxjg.learn.coroutines.MainActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         // 模拟延迟数据回调。
         Handler(Looper.getMainLooper()).postDelayed({
             bDialog.onDataCallback("延迟数据回来了！！")
-        },5000)
+        }, 5000)
 
     }
 
@@ -101,7 +102,12 @@ class MainActivity : AppCompatActivity() {
 
 
     fun coroutineClick(view: View) {
-        startActivity(Intent(this, CoroutineMainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    fun kLineClick(view: View){
+        startActivity(Intent(this, KDiagramActivity::class.java))
+
     }
 
 
