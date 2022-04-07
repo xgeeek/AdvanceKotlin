@@ -71,7 +71,7 @@ val aStr: String = "HelloWorld"
 val fromChars: String = String(charArrayOf('H', 'e', 'l', 'l', 'o', 'W', 'o', 'r', 'l', 'd'))
 val rawStr: String = """ wode
     hhhhh
-    \n
+    
     \t
     dkja
     """

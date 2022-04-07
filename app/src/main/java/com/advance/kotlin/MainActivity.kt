@@ -7,9 +7,12 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.advance.kotlin.kline.demo.KDiagramActivity
+import com.advance.kotlin.mmkv.MkTableUtils
+import com.advance.kotlin.mmkv.MkUtils
 import com.advance.kotlin.sort_dialog.ADialog
 import com.advance.kotlin.sort_dialog.BDialog
 import com.advance.kotlin.sort_dialog.CDialog
@@ -45,6 +48,28 @@ class MainActivity : AppCompatActivity() {
             bDialog.onDataCallback("延迟数据回来了！！")
         }, 5000)
 
+        MkUtils.encode("test", "hahaha")
+        MkUtils.encode("test2", 123.45)
+        val tvOne = findViewById<TextView>(R.id.tv_one)
+        tvOne.text = MkUtils.decodeDouble("test2").toString()
+
+        MkTableUtils.encode(
+            "quote", " fun encode(key: String, value: Any?) {" +
+                    "        when (value) {" +
+                    "            is String -> mmkv?.encode(key, value)" +
+                    "            is Float -> mmkv?.encode(key, value)" +
+                    "            is Boolean -> mmkv?.encode(key, value)" +
+                    "            is Int -> mmkv?.encode(key, value)" +
+                    "            is Long -> mmkv?.encode(key, value)" +
+                    "            is Double -> mmkv?.encode(key, value)" +
+                    "            is ByteArray -> mmkv?.encode(key, value)" +
+                    "            is Nothing -> return" +
+                    "        }" +
+                    "    }"
+        )
+
+        val tvTwo = findViewById<TextView>(R.id.tv_two)
+        tvTwo.text = MkTableUtils.decodeString("quote").toString()
     }
 
     //创建 DialogChain
@@ -105,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
     }
 
-    fun kLineClick(view: View){
+    fun kLineClick(view: View) {
         startActivity(Intent(this, KDiagramActivity::class.java))
 
     }

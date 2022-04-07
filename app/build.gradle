@@ -50,4 +50,7 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 
+
+    implementation 'com.tencent:mmkv:1.2.13'
+
 }
