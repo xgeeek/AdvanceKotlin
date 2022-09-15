@@ -8,12 +8,9 @@ import java.util.*
  * @author xugang
  * @date 2022/4/7
  */
-object MkUtils {
-    var mmkv: MMKV? = null
+open class MkBaseUtils {
 
-    init {
-        mmkv = MMKV.defaultMMKV()
-    }
+    var mmkv: MMKV? = null
 
     fun encode(key: String, value: Any?) {
         when (value) {
@@ -85,5 +82,26 @@ object MkUtils {
     fun clearAll() {
         mmkv?.clearAll()
     }
+}
 
+
+
+object MkvUtils : MkBaseUtils() {
+    init {
+        mmkv = MMKV.defaultMMKV()
+    }
+}
+
+
+object MkvAdvanceUtils : MkBaseUtils(){
+    init {
+        mmkv = MMKV.mmkvWithID("advance")
+    }
+}
+
+object MkvTableUtils : MkBaseUtils() {
+
+    init {
+        mmkv = MMKV.mmkvWithID("codeTable")
+    }
 }
