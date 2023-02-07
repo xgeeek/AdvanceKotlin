@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <declare-styleable name="FloatBottomView">
+        <!--区域默认颜色-->
+        <attr name="normalColor" format="color" />
+        <!--区域选中颜色-->
+        <attr name="inRangeColor" format="color" />
+    </declare-styleable>
+
+</resources>

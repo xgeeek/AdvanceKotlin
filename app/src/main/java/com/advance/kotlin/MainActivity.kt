@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.Gravity
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -20,6 +20,12 @@ import com.advance.kotlin.sort_dialog.BDialog
 import com.advance.kotlin.sort_dialog.CDialog
 import com.advance.kotlin.sort_dialog.DialogChain
 import com.kh.keyboard.KeyBoardDialogUtils
+import com.lzf.easyfloat.EasyFloat
+import com.lzf.easyfloat.enums.ShowPattern
+import com.lzf.easyfloat.enums.SidePattern
+import com.lzf.easyfloat.interfaces.OnTouchRangeListener
+import com.lzf.easyfloat.utils.DragUtils
+import com.lzf.easyfloat.widget.BaseSwitchView
 import xxjg.learn.coroutines.MainActivity
 
 class MainActivity : AppCompatActivity() {
@@ -129,8 +135,41 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun kLineClick(view: View) {
-        startActivity(Intent(this, KDiagramActivity::class.java))
+        //startActivity(Intent(this, KDiagramActivity::class.java))
+        showAppFloat3("xx")
+    }
 
+    private fun showAppFloat3(tag: String) {
+        EasyFloat.with(this.applicationContext)
+            .setTag(tag)
+            .setShowPattern(ShowPattern.ALL_TIME)
+            .setSidePattern(SidePattern.RESULT_SIDE)
+            .setImmersionStatusBar(true)
+            .setGravity(Gravity.END, -20, 100)
+            .setLayout(R.layout.layout_suspension_view) {
+
+            }
+            .registerCallback {
+                drag { _, motionEvent ->
+                    DragUtils.registerDragClose(motionEvent, object : OnTouchRangeListener {
+                        override fun touchInRange(inRange: Boolean, view: BaseSwitchView) {
+                            view.findViewById<TextView>(com.lzf.easyfloat.R.id.tv_delete).text =
+                                if (inRange) "松手删除" else "删除浮窗"
+
+                            view.findViewById<ImageView>(com.lzf.easyfloat.R.id.iv_delete)
+                                .setImageResource(
+                                    if (inRange) com.lzf.easyfloat.R.drawable.icon_delete_selected
+                                    else com.lzf.easyfloat.R.drawable.icon_delete_normal
+                                )
+                        }
+
+                        override fun touchUpInRange() {
+                            EasyFloat.dismiss(tag)
+                        }
+                    }, showPattern = ShowPattern.ALL_TIME)
+                }
+            }
+            .show()
     }
 
 

@@ -10,8 +10,8 @@
         android:id="@+id/tv_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         android:onClick="coroutineClick"
+        android:text="Hello World!"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,22 +20,57 @@
         android:id="@+id/tv_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:onClick="kLineClick"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_one"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="xxxx"
-        android:focusableInTouchMode="false"
-        android:id="@+id/et"
-        app:layout_constraintTop_toBottomOf="@+id/tv_two"
+        android:onClick="kLineClick"
+        android:text="Hello World!"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:textColor="@android:color/black"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_one" />
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="false"
+        android:hint="xxxx"
+        android:textColor="@android:color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_two" />
+
+    <!--<com.advance.kotlin.susp.view.BottomDeleteFloatView
+        android:id="@+id/fbdv"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="20dp"
+        app:inRangeColor="#99FF0000"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et"
+        app:normalColor="#99000000">
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:text="刪除悬浮窗"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_above="@id/tv_delete"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/icon_delete_normal" />
+
+    </com.advance.kotlin.susp.view.BottomDeleteFloatView>-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
