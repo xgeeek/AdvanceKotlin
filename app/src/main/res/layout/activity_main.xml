@@ -8,35 +8,64 @@
 
     <TextView
         android:id="@+id/tv_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@android:color/holo_blue_bright"
+        android:gravity="center"
         android:onClick="coroutineClick"
-        android:text="Hello World!"
+        android:text="网页视频全屏"
+        android:textColor="#333333"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
         android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_bright"
+        android:gravity="center"
         android:onClick="kLineClick"
-        android:text="Hello World!"
+        android:text="刷新控件"
+        android:textColor="#333333"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_one" />
 
     <EditText
         android:id="@+id/et"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_bright"
         android:focusableInTouchMode="false"
-        android:hint="xxxx"
-        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:hint="自定义键盘"
+        android:textColor="#333333"
+        android:textColorHint="#333333"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_two" />
+
+
+    <TextView
+        android:id="@+id/tv_three"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_bright"
+        android:gravity="center"
+        android:onClick="fragmentClick"
+        android:text="fragment可见性"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et" />
 
     <!--<com.advance.kotlin.susp.view.BottomDeleteFloatView
         android:id="@+id/fbdv"

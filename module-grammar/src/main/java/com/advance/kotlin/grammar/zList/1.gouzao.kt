@@ -1,5 +1,6 @@
 package com.advance.kotlin.grammar.zList
 
+import android.util.Log
 import java.util.*
 
 /**
@@ -75,5 +76,14 @@ fun byOtherListCreate() {
 
 fun main(args: Array<String>) {
     initAndCopyCreate()
+
+    Thread(){
+        while (true){
+            println("111")
+        }
+        println("222")
+        println("333")
+    }.start()
+
 }
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <com.advance.kotlin.fragmentvisible.ViewPagerInScrollView
+            android:id="@+id/vp_main"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <RadioGroup
+            android:id="@+id/group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <com.advance.kotlin.utils.MyRadioButton
+                android:id="@+id/rb_mrb_tab_home"
+                style="@style/menu_tab"
+                android:text="首页"
+                app:rbDrawableTop="@drawable/selector_menu_tab_home" />
+
+            <com.advance.kotlin.utils.MyRadioButton
+                android:id="@+id/rb_mrb_tab_quote"
+                style="@style/menu_tab"
+                android:text="行情"
+                app:rbDrawableTop="@drawable/selector_menu_tab_quote" />
+
+            <com.advance.kotlin.utils.MyRadioButton
+                android:id="@+id/rb_mrb_tab_td"
+                style="@style/menu_tab"
+                android:text="交易"
+                app:rbDrawableTop="@drawable/selector_menu_tab_td" />
+
+            <com.advance.kotlin.utils.MyRadioButton
+                android:id="@+id/rb_mrb_tab_communication"
+                style="@style/menu_tab"
+                android:text="我的"
+                app:rbDrawableTop="@drawable/selector_menu_tab_communication" />
+
+
+        </RadioGroup>
+    </LinearLayout>
+
+</layout>

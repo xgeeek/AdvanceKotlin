@@ -11,6 +11,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.advance.kotlin.fragmentvisible.FragmentVisibleActivity
+import com.advance.kotlin.home.HomeActivity
 import com.advance.kotlin.kline.demo.KDiagramActivity
 import com.advance.kotlin.mmkv.MkvAdvanceUtils
 import com.advance.kotlin.mmkv.MkvTableUtils
@@ -19,6 +21,7 @@ import com.advance.kotlin.sort_dialog.ADialog
 import com.advance.kotlin.sort_dialog.BDialog
 import com.advance.kotlin.sort_dialog.CDialog
 import com.advance.kotlin.sort_dialog.DialogChain
+import com.advance.kotlin.videowebview.VideoWewbViewActivity
 import com.kh.keyboard.KeyBoardDialogUtils
 import com.lzf.easyfloat.EasyFloat
 import com.lzf.easyfloat.enums.ShowPattern
@@ -131,12 +134,16 @@ class MainActivity : AppCompatActivity() {
 
 
     fun coroutineClick(view: View) {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, VideoWewbViewActivity::class.java))
     }
 
     fun kLineClick(view: View) {
-        //startActivity(Intent(this, KDiagramActivity::class.java))
-        showAppFloat3("xx")
+        startActivity(Intent(this, HomeActivity::class.java))
+        //showAppFloat3("xx")
+    }
+
+    fun fragmentClick(view: View){
+        startActivity(Intent(this, FragmentVisibleActivity::class.java))
     }
 
     private fun showAppFloat3(tag: String) {
