@@ -2,8 +2,10 @@
 buildscript {
     ext.kotlin_version = "1.5.31"
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
         google()
-        jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
@@ -16,8 +18,17 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven {
+            url MAVEN_ADDRESS
+            credentials {
+                username OA_USERNAME
+                password OA_PASSWORD
+            }
+        }
         google()
-        jcenter()
     }
 }
 

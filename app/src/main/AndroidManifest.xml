@@ -33,6 +33,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".fragmentvisible.FragmentVisibleActivity" />
+        <activity android:name=".webviewscroll.WebviewScrollActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/smart_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/include_home_header_layout" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F0F2F8">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@color/cpb_red" />
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_marginTop="44dp">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/app_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F0F2F8"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+                    <com.google.android.material.appbar.CollapsingToolbarLayout
+                        android:id="@+id/toolbar_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fitsSystemWindows="true"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="500dp"
+                                android:background="@color/colorPrimary" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_layout_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        app:tabIndicatorColor="@color/colorAccent"
+                        app:tabSelectedTextColor="@color/colorAccent"
+                        app:tabTextColor="#000000" />
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vp_content_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="12dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </FrameLayout>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

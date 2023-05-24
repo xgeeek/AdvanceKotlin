@@ -22,6 +22,7 @@ import com.advance.kotlin.sort_dialog.BDialog
 import com.advance.kotlin.sort_dialog.CDialog
 import com.advance.kotlin.sort_dialog.DialogChain
 import com.advance.kotlin.videowebview.VideoWewbViewActivity
+import com.advance.kotlin.webviewscroll.WebviewScrollActivity
 import com.kh.keyboard.KeyBoardDialogUtils
 import com.lzf.easyfloat.EasyFloat
 import com.lzf.easyfloat.enums.ShowPattern
@@ -144,6 +145,10 @@ class MainActivity : AppCompatActivity() {
 
     fun fragmentClick(view: View){
         startActivity(Intent(this, FragmentVisibleActivity::class.java))
+    }
+
+    fun webviewClick(view: View){
+        startActivity(Intent(this, WebviewScrollActivity::class.java))
     }
 
     private fun showAppFloat3(tag: String) {
