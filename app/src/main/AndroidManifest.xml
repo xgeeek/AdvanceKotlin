@@ -34,6 +34,14 @@
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".fragmentvisible.FragmentVisibleActivity" />
         <activity android:name=".webviewscroll.WebviewScrollActivity" />
+        <activity android:name=".canvas.CanvasClipActivity" />
+        <activity android:name="com.example.kotlin.scrollingtable.MainTableActivity" />
+        <activity android:name="com.example.kotlin.scrollingtable.type1.Type1Activity" />
+        <activity android:name="com.example.kotlin.scrollingtable.type2.Type2Activity" />
+        <activity android:name="com.example.kotlin.scrollingtable.type3.Type3Activity" />
+        <activity android:name="com.example.kotlin.scrollingtable.type4.Type4Activity" />
+        <activity android:name="com.example.kotlin.scrollingtable.type5.Type5Activity" />
+        <activity android:name="com.example.kotlin.scrollingtable.type6.Type6Activity" />
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.advance.kotlin.canvas.CanvasClipActivity
 import com.advance.kotlin.fragmentvisible.FragmentVisibleActivity
 import com.advance.kotlin.home.HomeActivity
 import com.advance.kotlin.kline.demo.KDiagramActivity
@@ -23,6 +24,7 @@ import com.advance.kotlin.sort_dialog.CDialog
 import com.advance.kotlin.sort_dialog.DialogChain
 import com.advance.kotlin.videowebview.VideoWewbViewActivity
 import com.advance.kotlin.webviewscroll.WebviewScrollActivity
+import com.example.kotlin.scrollingtable.MainTableActivity
 import com.kh.keyboard.KeyBoardDialogUtils
 import com.lzf.easyfloat.EasyFloat
 import com.lzf.easyfloat.enums.ShowPattern
@@ -149,6 +151,14 @@ class MainActivity : AppCompatActivity() {
 
     fun webviewClick(view: View){
         startActivity(Intent(this, WebviewScrollActivity::class.java))
+    }
+
+    fun canvasClick(view: View){
+        startActivity(Intent(this, CanvasClipActivity::class.java))
+    }
+
+    fun tabClick(view: View){
+        startActivity(Intent(this, MainTableActivity::class.java))
     }
 
     private fun showAppFloat3(tag: String) {
