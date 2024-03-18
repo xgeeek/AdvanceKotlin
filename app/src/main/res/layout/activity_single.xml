@@ -4,15 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.advance.kotlin.widget.MarqueeAnimalView
+        android:id="@+id/mqv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/klinegreen"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/seekbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:max="100"
+        android:maxHeight="8dp"
+        android:minHeight="8dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/seekbar_sim_red_bg"
+        android:thumb="@drawable/img_float_strategy"
+        android:thumbOffset="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tv_tag"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mqv" />
+
     <TextView
         android:id="@+id/tv_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:textColor="#FA505A"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/seekbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

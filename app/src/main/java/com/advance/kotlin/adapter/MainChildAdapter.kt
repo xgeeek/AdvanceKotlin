@@ -64,6 +64,13 @@ class MainChildAdapter :
                     mContext.startActivity(Intent(mContext, KDiagramActivity::class.java))
                 }
 
+                "SeekBar" -> {
+                    SingleActivity.startMe(mContext, item.name)
+                }
+
+                "跑马灯" -> {
+                    SingleActivity.startMe(mContext, item.name)
+                }
             }
         }
     }

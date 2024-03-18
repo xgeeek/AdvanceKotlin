@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity() {
             add(JumpItemBean("常见效果", mutableListOf<JumpItemChildBean>().apply {
                 add(JumpItemChildBean("顶部小楼"))
                 add(JumpItemChildBean("期货列表"))
+                add(JumpItemChildBean("SeekBar"))
+                add(JumpItemChildBean("跑马灯"))
                 /*add(JumpItemChildBean("KChart"))*/
             }, false))
         }
