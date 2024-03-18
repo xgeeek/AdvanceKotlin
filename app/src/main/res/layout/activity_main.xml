@@ -4,145 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E7EDFA"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_one"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="@android:color/holo_blue_bright"
-        android:gravity="center"
-        android:onClick="coroutineClick"
-        android:text="网页视频全屏"
-        android:textColor="#333333"
-        android:textSize="14sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_two"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_bright"
-        android:gravity="center"
-        android:onClick="kLineClick"
-        android:text="刷新控件"
-        android:textColor="#333333"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_one" />
+        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_bright"
-        android:focusableInTouchMode="false"
-        android:gravity="center"
-        android:hint="自定义键盘"
-        android:textColor="#333333"
-        android:textColorHint="#333333"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_two" />
-
-
-    <TextView
-        android:id="@+id/tv_three"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_bright"
-        android:gravity="center"
-        android:onClick="fragmentClick"
-        android:text="fragment可见性"
-        android:textColor="#333333"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et" />
-
-
-    <TextView
-        android:id="@+id/tv_four"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_bright"
-        android:gravity="center"
-        android:onClick="webviewClick"
-        android:text="webview scroll"
-        android:textColor="#333333"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_three" />
-
-    <TextView
-        android:id="@+id/tv_five"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:onClick="canvasClick"
-        android:text="canvas"
-        android:background="@android:color/holo_blue_bright"
-        app:layout_constraintTop_toBottomOf="@+id/tv_four"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"/>
-
-    <TextView
-        android:id="@+id/tv_six"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:onClick="tabClick"
-        android:text="tab"
-        android:background="@android:color/holo_blue_bright"
-        app:layout_constraintTop_toBottomOf="@+id/tv_five"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"/>
-
-
-    <!--<com.advance.kotlin.susp.view.BottomDeleteFloatView
-        android:id="@+id/fbdv"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginTop="20dp"
-        app:inRangeColor="#99FF0000"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et"
-        app:normalColor="#99000000">
-
-        <TextView
-            android:id="@+id/tv_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="24dp"
-            android:gravity="center"
-            android:text="刪除悬浮窗"
-            android:textColor="#333333"
-            android:textSize="12sp" />
-
-        <ImageView
-            android:id="@+id/iv_delete"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_above="@id/tv_delete"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="6dp"
-            android:src="@drawable/icon_delete_normal" />
-
-    </com.advance.kotlin.susp.view.BottomDeleteFloatView>-->
+<!--    <EditText-->
+<!--        android:id="@+id/et"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@android:color/holo_blue_bright"-->
+<!--        android:focusableInTouchMode="false"-->
+<!--        android:gravity="center"-->
+<!--        android:hint="自定义键盘"-->
+<!--        android:textColor="#333333"-->
+<!--        android:textColorHint="#333333"-->
+<!--        android:textSize="14sp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_two" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

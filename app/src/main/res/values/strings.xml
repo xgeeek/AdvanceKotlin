@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AdvanceKotlin</string>
+    <string name="app_name">Demo</string>
 
     <string name="close_quota">关闭指标</string>
     <string name="specifications">技术指标</string>

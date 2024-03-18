@@ -38,9 +38,9 @@ class ClipExmView @JvmOverloads constructor(
         canvas.drawPath(redPath, viewPaint)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //canvas.clipPath(redPath)
+            canvas.clipPath(redPath)
         }
-        //canvas.drawColor(Color.RED)
+        canvas.drawColor(Color.RED)
     }
 
 }

@@ -1,38 +1,18 @@
 package com.advance.kotlin
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
-import android.view.Gravity
-import android.view.View
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.advance.kotlin.canvas.CanvasClipActivity
-import com.advance.kotlin.fragmentvisible.FragmentVisibleActivity
-import com.advance.kotlin.home.HomeActivity
-import com.advance.kotlin.kline.demo.KDiagramActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.advance.kotlin.adapter.MainAdapter
+import com.advance.kotlin.bean.JumpItemBean
+import com.advance.kotlin.bean.JumpItemChildBean
 import com.advance.kotlin.mmkv.MkvAdvanceUtils
 import com.advance.kotlin.mmkv.MkvTableUtils
 import com.advance.kotlin.mmkv.MkvUtils
-import com.advance.kotlin.sort_dialog.ADialog
-import com.advance.kotlin.sort_dialog.BDialog
-import com.advance.kotlin.sort_dialog.CDialog
-import com.advance.kotlin.sort_dialog.DialogChain
-import com.advance.kotlin.videowebview.VideoWewbViewActivity
-import com.advance.kotlin.webviewscroll.WebviewScrollActivity
-import com.example.kotlin.scrollingtable.MainTableActivity
-import com.kh.keyboard.KeyBoardDialogUtils
-import com.lzf.easyfloat.EasyFloat
-import com.lzf.easyfloat.enums.ShowPattern
-import com.lzf.easyfloat.enums.SidePattern
-import com.lzf.easyfloat.interfaces.OnTouchRangeListener
-import com.lzf.easyfloat.utils.DragUtils
-import com.lzf.easyfloat.widget.BaseSwitchView
-import xxjg.learn.coroutines.MainActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,12 +20,41 @@ class MainActivity : AppCompatActivity() {
 
     val mLiveData = MutableLiveData<String>()
     lateinit var foreverObj: String
-    private lateinit var dialogChain: DialogChain
-    private val bDialog by lazy { BDialog(this) }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val mainList = mutableListOf<JumpItemBean>().apply {
+            add(JumpItemBean("弹窗", mutableListOf<JumpItemChildBean>().apply {
+                add(JumpItemChildBean("Dialog链式调用"))
+                add(JumpItemChildBean("悬浮窗"))
+            }, true))
+            add(JumpItemBean("WebView", mutableListOf<JumpItemChildBean>().apply {
+                add(JumpItemChildBean("网页视频全屏播放"))
+                add(JumpItemChildBean("WebView in scrollView"))
+            }, false))
+            add(JumpItemBean("Fragment", mutableListOf<JumpItemChildBean>().apply {
+                add(JumpItemChildBean("可见性监听"))
+            }, false))
+            add(JumpItemBean("Canvas", mutableListOf<JumpItemChildBean>().apply {
+                add(JumpItemChildBean("clipPath"))
+            }, false))
+            add(JumpItemBean("常见效果", mutableListOf<JumpItemChildBean>().apply {
+                add(JumpItemChildBean("顶部小楼"))
+                add(JumpItemChildBean("期货列表"))
+                /*add(JumpItemChildBean("KChart"))*/
+            }, false))
+        }
+
+        findViewById<RecyclerView>(R.id.rv_main).apply {
+            this.layoutManager = LinearLayoutManager(this@MainActivity)
+            val mainAdapter = MainAdapter()
+            this.adapter = mainAdapter
+            mainAdapter.setNewData(mainList)
+        }
+
 
         mLiveData.observe(this, {
             Log.i(TAG, "onchanged: $it")
@@ -57,49 +66,23 @@ class MainActivity : AppCompatActivity() {
         //mLiveData.observeForever(MyObserve())
 
 
-        createDialogChain() //创建 DialogChain
-        // 模拟延迟数据回调。
-        Handler(Looper.getMainLooper()).postDelayed({
-            bDialog.onDataCallback("延迟数据回来了！！")
-        }, 5000)
-
-
         MkvUtils.clearAll()
         MkvAdvanceUtils.encode("new", "new advance555")
-        val tvOne = findViewById<TextView>(R.id.tv_one)
-        tvOne.text = MkvAdvanceUtils.decodeString("new").toString()
-
+        MkvAdvanceUtils.decodeString("new").toString()
         MkvTableUtils.encode(
             "quote", "testtesttest"
         )
 
-        val tvTwo = findViewById<TextView>(R.id.tv_two)
-        tvTwo.text = MkvTableUtils.decodeString("quote").toString()
-
-
-        val et: EditText = findViewById(R.id.et)
-        val keyBoardDialogUtils = KeyBoardDialogUtils(this)
-        et.setOnClickListener(View.OnClickListener { keyBoardDialogUtils.show(et) })
+//        val et: EditText = findViewById(R.id.et)
+//        val keyBoardDialogUtils = KeyBoardDialogUtils(this)
+//        et.setOnClickListener(View.OnClickListener { keyBoardDialogUtils.show(et) })
     }
 
-    //创建 DialogChain
-    private fun createDialogChain() {
-        dialogChain = DialogChain.create(3)
-            .attach(this)
-            .addInterceptor(ADialog(this))
-            .addInterceptor(bDialog)
-            .addInterceptor(CDialog(this))
-            .build()
-
-    }
 
     override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart")
         mLiveData.value = "onStart"  // 变为活跃状态，会回调onchange， 并且value会覆盖oncreate，onstop中设置的value
-
-        // 开始从链头弹窗。
-        dialogChain.process()
     }
 
     override fun onResume() {
@@ -134,65 +117,5 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-
-    fun coroutineClick(view: View) {
-        startActivity(Intent(this, VideoWewbViewActivity::class.java))
-    }
-
-    fun kLineClick(view: View) {
-        startActivity(Intent(this, HomeActivity::class.java))
-        //showAppFloat3("xx")
-    }
-
-    fun fragmentClick(view: View){
-        startActivity(Intent(this, FragmentVisibleActivity::class.java))
-    }
-
-    fun webviewClick(view: View){
-        startActivity(Intent(this, WebviewScrollActivity::class.java))
-    }
-
-    fun canvasClick(view: View){
-        startActivity(Intent(this, CanvasClipActivity::class.java))
-    }
-
-    fun tabClick(view: View){
-        startActivity(Intent(this, MainTableActivity::class.java))
-    }
-
-    private fun showAppFloat3(tag: String) {
-        EasyFloat.with(this.applicationContext)
-            .setTag(tag)
-            .setShowPattern(ShowPattern.ALL_TIME)
-            .setSidePattern(SidePattern.RESULT_SIDE)
-            .setImmersionStatusBar(true)
-            .setGravity(Gravity.END, -20, 100)
-            .setLayout(R.layout.layout_suspension_view) {
-
-            }
-            .registerCallback {
-                drag { _, motionEvent ->
-                    DragUtils.registerDragClose(motionEvent, object : OnTouchRangeListener {
-                        override fun touchInRange(inRange: Boolean, view: BaseSwitchView) {
-                            view.findViewById<TextView>(com.lzf.easyfloat.R.id.tv_delete).text =
-                                if (inRange) "松手删除" else "删除浮窗"
-
-                            view.findViewById<ImageView>(com.lzf.easyfloat.R.id.iv_delete)
-                                .setImageResource(
-                                    if (inRange) com.lzf.easyfloat.R.drawable.icon_delete_selected
-                                    else com.lzf.easyfloat.R.drawable.icon_delete_normal
-                                )
-                        }
-
-                        override fun touchUpInRange() {
-                            EasyFloat.dismiss(tag)
-                        }
-                    }, showPattern = ShowPattern.ALL_TIME)
-                }
-            }
-            .show()
-    }
-
 
 }
