@@ -5,10 +5,12 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import com.blankj.utilcode.util.SizeUtils
 import java.util.*
 
 class MarqueeAnimalView @JvmOverloads constructor(
@@ -64,7 +66,7 @@ class MarqueeAnimalView @JvmOverloads constructor(
     private fun recycle(view: View) {
         synchronized(sPoolSync) {
             if (queue.size < MAX_POOL_SIZE) {
-                // 缓存view
+                // 重复使用view
                 queue.offer(view)
             }
         }
@@ -95,6 +97,7 @@ class MarqueeAnimalView @JvmOverloads constructor(
                     interpolator = null
                     addUpdateListener(
                         RecyclerAnimatorUpdateListener(targetValue) {
+                            // 动画开始 下一个
                             next(obtain())
                             removeUpdateListener(it)
                         }
@@ -206,7 +209,8 @@ class RecyclerAnimatorUpdateListener(
         if (postFlag) {
             postFlag = false
             (animation?.animatedValue as? Float)?.let {
-                if (it < targetValue) {
+                // 动画执行移动超过当前view的宽度（20f加的间距）  触发下一个
+                if (it <= (targetValue - SizeUtils.dp2px(20f))) {
                     block.invoke(this)
                     return@let
                 }

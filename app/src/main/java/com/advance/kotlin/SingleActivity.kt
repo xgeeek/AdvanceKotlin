@@ -6,14 +6,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.TranslateAnimation
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doBeforeTextChanged
 import com.advance.kotlin.sort_dialog.ADialog
 import com.advance.kotlin.sort_dialog.BDialog
 import com.advance.kotlin.sort_dialog.CDialog
@@ -21,13 +27,14 @@ import com.advance.kotlin.sort_dialog.DialogChain
 import com.advance.kotlin.widget.MarqueeAnimalView
 import com.advance.kotlin.widget.PoolViewFactory
 import com.blankj.utilcode.util.ConvertUtils
-import com.blankj.utilcode.util.ResourceUtils
+import com.blankj.utilcode.util.ScreenUtils
 import com.lzf.easyfloat.EasyFloat
 import com.lzf.easyfloat.enums.ShowPattern
 import com.lzf.easyfloat.enums.SidePattern
 import com.lzf.easyfloat.interfaces.OnTouchRangeListener
 import com.lzf.easyfloat.utils.DragUtils
 import com.lzf.easyfloat.widget.BaseSwitchView
+
 
 /**
  * @author xugang
@@ -54,13 +61,49 @@ class SingleActivity : AppCompatActivity() {
             fromTag = it.getStringExtra("fromTag")!!
         }
 
+        val flSeekBar = findViewById<LinearLayout>(R.id.fl_seekBar)
+        val tvThumb = findViewById<TextView>(R.id.tv_thumb)
         val seekBar = findViewById<SeekBar>(R.id.seekbar)
+        var lastProgress = 0
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(sb: SeekBar?, progress: Int, fromUser: Boolean) {
+                val startW = (lastProgress / 100f) * ScreenUtils.getScreenWidth()
+                val width = (progress / 100f) * ScreenUtils.getScreenWidth()
+                tvThumb.text = progress.toString()
+                if (!fromUser) {
+                    val ta = TranslateAnimation(startW, width, 0f, 0f)
+                    ta.interpolator = DecelerateInterpolator()
+                    ta.duration = 80 //持续时间
+                    ta.fillAfter = true //平移完后true代表保存平移后的状态
+                    tvThumb.startAnimation(ta)
+                }
+                lastProgress = progress
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+
+        })
+
+
         val mqv = findViewById<MarqueeAnimalView>(R.id.mqv)
 
         val tvTag: TextView = findViewById(R.id.tv_tag)
+        //core-ktx 库的使用
+        tvTag.doBeforeTextChanged { text, start, count, after ->
+            Log.d("TestVwKt", "doBeforeTextChanged $text  $count")
+        }
+        tvTag.doAfterTextChanged {
+            Log.d("TestVwKt", "doAfterTextChanged  ${it.toString()}")
+        }
+        Log.d("TestVwKt", "text ")
         tvTag.text = fromTag
+
         if (fromTag == "SeekBar") {
-            seekBar.visibility = View.VISIBLE
+            flSeekBar.visibility = View.VISIBLE
             seekBar.progress = 0
 
         } else if (fromTag == "跑马灯") {
@@ -71,7 +114,12 @@ class SingleActivity : AppCompatActivity() {
             mqv.setFactory(object : PoolViewFactory {
                 override fun makeView(layoutInflater: LayoutInflater, parent: ViewGroup): View {
                     val view = TextView(this@SingleActivity)
-                    view.setPadding(ConvertUtils.dp2px(12f), ConvertUtils.dp2px(5f), ConvertUtils.dp2px(12f), ConvertUtils.dp2px(5f))
+                    view.setPadding(
+                        ConvertUtils.dp2px(12f),
+                        ConvertUtils.dp2px(5f),
+                        ConvertUtils.dp2px(12f),
+                        ConvertUtils.dp2px(5f)
+                    )
                     view.textSize = 12f
                     view.setTextColor(resources.getColor(R.color.colorPrimary))
                     view.setBackgroundResource(R.drawable.bg_btn_commit)
@@ -120,9 +168,9 @@ class SingleActivity : AppCompatActivity() {
                     }
 
                     if (add) {
-                        seekBar.progress = seekBar.progress + 10
+                        seekBar.progress = seekBar.progress + 40
                     } else {
-                        seekBar.progress = seekBar.progress - 10
+                        seekBar.progress = seekBar.progress - 40
                     }
                 }
             }

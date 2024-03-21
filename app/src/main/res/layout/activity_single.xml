@@ -10,42 +10,57 @@
         android:layout_height="50dp"
         android:background="@color/klinegreen"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/seekbar"
+        app:layout_constraintBottom_toTopOf="@+id/fl_seekBar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <SeekBar
-        android:id="@+id/seekbar"
+    <LinearLayout
+        android:id="@+id/fl_seekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:gravity="center"
-        android:max="100"
-        android:maxHeight="8dp"
-        android:minHeight="8dp"
-        android:paddingStart="0dp"
-        android:paddingEnd="0dp"
-        android:progress="0"
-        android:progressDrawable="@drawable/seekbar_sim_red_bg"
-        android:thumb="@drawable/img_float_strategy"
-        android:thumbOffset="0dp"
         android:visibility="gone"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/tv_tag"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mqv" />
+        app:layout_constraintTop_toBottomOf="@+id/mqv">
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:max="100"
+            android:maxHeight="8dp"
+            android:minHeight="8dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/seekbar_sim_red_bg"
+            android:thumb="@drawable/img_float_strategy"
+            android:thumbOffset="0dp" />
+
+        <TextView
+            android:id="@+id/tv_thumb"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_tag"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="#FA505A"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekbar" />
+        app:layout_constraintTop_toBottomOf="@+id/fl_seekBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
