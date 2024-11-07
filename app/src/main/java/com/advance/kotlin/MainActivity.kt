@@ -48,6 +48,9 @@ class MainActivity : AppCompatActivity() {
                 add(JumpItemChildBean("跑马灯"))
                 /*add(JumpItemChildBean("KChart"))*/
             }, false))
+            add(JumpItemBean("glide", mutableListOf<JumpItemChildBean>().apply {
+                add(JumpItemChildBean("ImageView和Glide的ScaleType"))
+            }, false))
         }
 
         findViewById<RecyclerView>(R.id.rv_main).apply {

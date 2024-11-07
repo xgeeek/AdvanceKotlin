@@ -7,6 +7,7 @@ import com.advance.kotlin.SingleActivity
 import com.advance.kotlin.bean.JumpItemChildBean
 import com.advance.kotlin.canvas.CanvasClipActivity
 import com.advance.kotlin.fragmentvisible.FragmentVisibleActivity
+import com.advance.kotlin.glide.GlideImageViewScaleTypeActivity
 import com.advance.kotlin.home.HomeActivity
 import com.advance.kotlin.kline.demo.KDiagramActivity
 import com.advance.kotlin.videowebview.VideoWewbViewActivity
@@ -70,6 +71,10 @@ class MainChildAdapter :
 
                 "跑马灯" -> {
                     SingleActivity.startMe(mContext, item.name)
+                }
+
+                "ImageView和Glide的ScaleType" -> {
+                    GlideImageViewScaleTypeActivity.startMe(mContext)
                 }
             }
         }

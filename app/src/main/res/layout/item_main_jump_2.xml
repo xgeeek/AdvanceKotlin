@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="#FFEFEC"
+    android:orientation="vertical"
+    android:paddingBottom="8dp">
+
+    <LinearLayout
+        android:id="@+id/ll_tag"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:paddingStart="12dp">
+
+        <TextView
+            android:id="@+id/tv_tag"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:textColor="#262833"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_gravity="center_vertical"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_cir_arrow_down" />
+
+    </LinearLayout>
+
+    <com.advance.kotlin.fold_text_view.SimpleFoldTextView
+        android:id="@+id/tv_desc"
+        android:layout_marginHorizontal="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:visibility="gone" />
+
+</LinearLayout>
+

@@ -43,6 +43,7 @@
         <activity android:name="com.example.kotlin.scrollingtable.type5.Type5Activity" />
         <activity android:name="com.example.kotlin.scrollingtable.type6.Type6Activity" />
         <activity android:name=".SingleActivity" />
+        <activity android:name=".glide.GlideImageViewScaleTypeActivity" />
     </application>
 
 </manifest>
