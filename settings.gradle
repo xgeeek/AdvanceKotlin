@@ -3,3 +3,5 @@ include ':app'
 rootProject.name = "AdvanceKotlin"
 include ':module-coroutines'
 include ':easyfloat'
+include ':app-jetpack-compose'
+include ':app-jetpack'
